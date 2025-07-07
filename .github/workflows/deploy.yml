@@ -18,7 +18,7 @@ jobs:
       - name: Install & Deploy with Wrangler
         run: |
           npm install -g wrangler
-          wrangler pages deploy ./ --project-name=devops-6b --branch=main
+          wrangler pages deploy ./ --project-name=dev6b --branch=main
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
