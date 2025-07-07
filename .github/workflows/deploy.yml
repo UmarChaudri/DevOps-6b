@@ -8,15 +8,17 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+
     steps:
-      - name: Checkout repo
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install Wrangler CLI (Cloudflare tool)
-        run: npm install -g wrangler
-
-      - name: Publish to Cloudflare Pages
-        run: wrangler pages publish ./ --project-name=DevOps-6b --branch=main
+      - name: Install & Deploy with Wrangler
+        run: |
+          npm install -g wrangler
+          wrangler pages deploy ./ --project-name=devops-6b --branch=main
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
